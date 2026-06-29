@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanyanut | Portfolio</title>
+    <style>
+        /* รีเซ็ตค่าเริ่มต้นและสไตล์พื้นฐาน */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* แถบเมนูด้านบน (Navigation) */
+        header {
+            background: #fff;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* หน้าแรกสุด (Hero Section) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #74b9ff, #a29bfe);
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #6c5ce7;
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* การจัดหน้าส่วนต่างๆ */
+        section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #3498db;
+            margin: 10px auto 0;
+        }
+
+        /* ส่วนเกี่ยวกับฉัน และ ทักษะ (About & Skills) */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            background: #e1f5fe;
+            color: #0288d1;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ผลงาน (Projects Grid) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            height: 200px;
+            background: #dfe6e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b2bec3;
+            font-weight: bold;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+
+        /* ส่วนติดต่อ (Contact Section) */
+        .contact-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-method {
+            margin: 15px 0;
+            font-size: 1.1rem;
+        }
+
+        /* ฟุตเตอร์ด้านล่างสุด (Footer) */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ปรับการแสดงผลบนมือถือ */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- แถบเมนู -->
+    <header>
+        <nav>
+            <div class="logo">Kanyanut.</div>
+            <ul class="nav-links">
+                <li><a href="#home">หน้าแรก</a></li>
+                <li><a href="#about">เกี่ยวกับฉัน</a></li>
+                <li><a href="#projects">ผลงาน</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- หน้าแรก (Hero) -->
+    <section id="home" class="hero">
+        <h1>สวัสดีค่ะ, ฉันชื่อ กัญญานัฐ</h1>
+        <p>Digital Designer & Front-End Developer</p>
+        <a href="#projects" class="btn">ดูผลงานของฉัน</a>
+    </section>
+
+    <!-- ส่วนเกี่ยวกับฉัน (About) -->
+    <section id="about">
+        <h2 class="section-title">เกี่ยวกับฉัน</h2>
+        <div class="about-content">
+            <div>
+                <p>ยินดีต้อนรับสู่พอร์ตโฟลิโอของฉันค่ะ ฉันเป็นคนชอบสร้างสรรค์ผลงานดิจิทัลที่ใช้งานง่ายและดีไซน์สวยงาม มีความสุขกับการเปลี่ยนไอเดียในหัวให้ออกมาโลดแล่นบนหน้าจอเว็บไซค์</p>
+                <br>
+                <p>นอกจากเรื่องงานแล้ว ฉันยังชอบอัปเดตเทรนด์ดีไซน์ใหม่ๆ และเรียนรู้เทคโนโลยีใหม่ๆ อยู่เสมอเพื่อพัฒนาตัวเองค่ะ</p>
+            </div>
+            <div>
+                <h3>ทักษะความสามารถ (Skills)</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">HTML5 & CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Responsive Design</span>
+                    <span class="skill-tag">Git & GitHub</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ส่วนผลงาน (Projects) -->
+    <section id="projects">
+        <h2 class="section-title">ผลงานของฉัน</h2>
+        <div class="projects-grid">
+            <!-- โปรเจกต์ที่ 1 -->
+            <div class="project-card">
+                <div class="project-img">ภาพผลงาน 1</div>
+                <div class="project-info">
+                    <h3>E-Commerce Web Design</h3>
+                    <p>ออกแบบและพัฒนาหน้าเว็บไซต์ร้านค้าออนไลน์ที่ใช้งานง่ายและดูทันสมัย</p>
+                </div>
+            </div>
+            <!-- โปรเจกต์ที่ 2 -->
+            <div class="project-card">
+                <div class="project-img">ภาพผลงาน 2</div>
+                <div class="project-info">
+                    <h3>Dashboard Interface</h3>
+                    <p>ระบบจัดการหลังบ้านและแสดงข้อมูลกราฟสถิติต่างๆ แบบ Real-time</p>
+                </div>
+            </div>
+            <!-- โปรเจกต์ที่ 3 -->
+            <div class="project-card">
+                <div class="project-img">ภาพผลงาน 3</div>
+                <div class="project-info">
+                    <h3>Application UI Kit</h3>
+                    <p>ชุดดีไซน์องค์ประกอบต่างๆ บนโมบายแอปพลิเคชันเพื่อความสวยงามและลื่นไหล</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ส่วนติดต่อ (Contact) -->
+    <section id="contact">
+        <h2 class="section-title">ช่องทางการติดต่อ</h2>
+        <div class="contact-container">
+            <p>หากคุณสนใจร่วมงานด้วย หรือมีข้อสงสัยใดๆ สามารถติดต่อฉันได้ตามช่องทางด้านล่างนี้เลยค่ะ!</p>
+            <br>
+            <div class="contact-method">📧 อีเมล: <strong>kanyanut@example.com</strong></div>
+            <div class="contact-method">🌐 LinkedIn: <strong>linkedin.com/in/kanyanut</strong></div>
+        </div>
+    </section>
+
+    <!-- ฟุตเตอร์ -->
+    <footer>
+        <p>&copy; 2026 Kanyanut. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
